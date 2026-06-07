@@ -29,3 +29,27 @@ Bring AI capabilities directly into your Filament admin panel with AI playground
 
 ```bash
 composer require latitudeinnovation/filament-raraxuan
+```
+
+Publish the config if you want to customize defaults:
+
+```bash
+php artisan vendor:publish --tag=filament-raraxuan-config
+```
+
+Register the plugin in your Filament panel provider:
+
+```php
+use LatitudeInnovation\FilamentRaraxuan\RaraxuanPlugin;
+
+$panel
+    ->plugin(RaraxuanPlugin::make());
+```
+
+Add your Raraxuan settings to `.env`:
+
+```dotenv
+RARAXUAN_API_KEY=your-api-key
+RARAXUAN_BASE_URL=https://ai.raraxuan.com
+RARAXUAN_DEFAULT_ENGINE=gpt-5.5
+```

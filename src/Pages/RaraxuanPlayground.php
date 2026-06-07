@@ -3,13 +3,16 @@
 namespace LatitudeInnovation\FilamentRaraxuan\Pages;
 
 use Filament\Forms;
-use Filament\Pages\Page;
 use Filament\Forms\Form;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Notifications\Notification;
-use Illuminate\Support\Facades\Http;
+use Filament\Pages\Page;
 
-class RaraxuanPlayground extends Page
+class RaraxuanPlayground extends Page implements HasForms
 {
+    use InteractsWithForms;
+
     protected static ?string $navigationIcon = 'heroicon-o-sparkles';
 
     protected static string $view = 'filament-raraxuan::pages.playground';

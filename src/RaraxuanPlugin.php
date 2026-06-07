@@ -17,14 +17,21 @@ class RaraxuanPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        $panel
-            ->pages([
-                RaraxuanSettings::class,
-                RaraxuanPlayground::class,
-            ])
-            ->widgets([
+        $pages = [
+            RaraxuanSettings::class,
+        ];
+
+        if (config('filament-raraxuan.enable_playground', true)) {
+            $pages[] = RaraxuanPlayground::class;
+        }
+
+        $panel->pages($pages);
+
+        if (config('filament-raraxuan.enable_chat_widget', true)) {
+            $panel->widgets([
                 RaraxuanChatWidget::class,
             ]);
+        }
     }
 
     public function boot(Panel $panel): void
