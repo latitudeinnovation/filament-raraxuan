@@ -1,0 +1,25 @@
+{
+    "name": "latitudeinnovation/filament-raraxuan",
+    "description": "Filament plugin for Raraxuan AI API.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "LatitudeInnovation\\FilamentRaraxuan\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.2",
+        "filament/filament": "^3.0",
+        "latitudeinnovation/laravel-raraxuan": "*"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LatitudeInnovation\\FilamentRaraxuan\\FilamentRaraxuanServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
