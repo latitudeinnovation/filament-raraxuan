@@ -3,19 +3,21 @@
 namespace LatitudeInnovation\FilamentRaraxuan\Pages;
 
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use LatitudeInnovation\FilamentRaraxuan\Support\FormatsRaraxuanResponses;
+use LatitudeInnovation\FilamentRaraxuan\Support\RaraxuanApi;
 
 class RaraxuanPlayground extends Page implements HasForms
 {
     use InteractsWithForms;
+    use FormatsRaraxuanResponses;
 
-    protected static ?string $navigationIcon = 'heroicon-o-sparkles';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-sparkles';
 
-    protected static string $view = 'filament-raraxuan::pages.playground';
+    protected string $view = 'filament-raraxuan::pages.playground';
 
     protected static ?string $title = 'Raraxuan Playground';
 
@@ -38,18 +40,26 @@ class RaraxuanPlayground extends Page implements HasForms
         ]);
     }
 
-    public function form(Form $form): Form
+    public function form(object $form): object
     {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('engine')
-                    ->required(),
+        $components = [
+            Forms\Components\TextInput::make('engine')
+                ->required(),
 
-                Forms\Components\Textarea::make('prompt')
-                    ->rows(8)
-                    ->required(),
-            ])
-            ->statePath('data');
+            Forms\Components\Textarea::make('prompt')
+                ->rows(8)
+                ->required(),
+        ];
+
+        if (method_exists($form, 'components')) {
+            return $form->components($components)->statePath('data');
+        }
+
+        if (method_exists($form, 'schema')) {
+            return $form->schema($components)->statePath('data');
+        }
+
+        throw new \RuntimeException('Unsupported Filament form object: ' . $form::class);
     }
 
     public function submit(): void
@@ -57,16 +67,9 @@ class RaraxuanPlayground extends Page implements HasForms
         $state = $this->form->getState();
 
         try {
-            /**
-             * Replace this part with your SDK method later:
-             *
-             * $this->response = Raraxuan::chat()
-             *     ->engine($state['engine'])
-             *     ->prompt($state['prompt'])
-             *     ->send();
-             */
+            $response = app(RaraxuanApi::class)->simple($state['prompt']);
 
-            $this->response = 'TODO: Connect this page to latitudeinnovation/laravel-raraxuan SDK.';
+            $this->response = $this->formatRaraxuanResponse($response);
 
             Notification::make()
                 ->title('Prompt submitted')

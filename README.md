@@ -22,8 +22,27 @@ Bring AI capabilities directly into your Filament admin panel with AI playground
 
 - PHP 8.2+
 - Laravel 10, 11 or 12
-- Filament 3.x
+- Filament 3.x, 4.x, or 5.x
 - Raraxuan API Account
+
+## Version Compatibility
+
+This package supports multiple Filament majors through an internal compatibility layer.
+
+- Filament 3.x
+- Filament 4.x
+- Filament 5.x
+
+The public plugin entrypoint remains the same across versions:
+
+```php
+use LatitudeInnovation\FilamentRaraxuan\RaraxuanPlugin;
+
+$panel
+    ->plugin(RaraxuanPlugin::make());
+```
+
+Compatibility is enforced in CI with a Filament 3/4/5 matrix workflow.
 
 ## Installation
 
@@ -50,6 +69,6 @@ Add your Raraxuan settings to `.env`:
 
 ```dotenv
 RARAXUAN_API_KEY=your-api-key
-RARAXUAN_BASE_URL=https://ai.raraxuan.com
+RARAXUAN_API_URL=https://ai.raraxuan.com/api
 RARAXUAN_DEFAULT_ENGINE=gpt-5.5
 ```

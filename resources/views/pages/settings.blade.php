@@ -11,7 +11,7 @@
         <p>Add these into your Laravel project's <code>.env</code>:</p>
 
         <pre class="mt-3 overflow-auto rounded bg-black p-4 text-white">RARAXUAN_API_KEY=your-api-key
-RARAXUAN_BASE_URL=https://ai.raraxuan.com
+RARAXUAN_API_URL=https://ai.raraxuan.com/api
 RARAXUAN_DEFAULT_ENGINE=gpt-5.5</pre>
     </div>
 </x-filament-panels::page>

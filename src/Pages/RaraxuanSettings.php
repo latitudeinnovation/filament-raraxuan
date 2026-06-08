@@ -3,7 +3,6 @@
 namespace LatitudeInnovation\FilamentRaraxuan\Pages;
 
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Notifications\Notification;
@@ -13,9 +12,9 @@ class RaraxuanSettings extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-cog-6-tooth';
 
-    protected static string $view = 'filament-raraxuan::pages.settings';
+    protected string $view = 'filament-raraxuan::pages.settings';
 
     protected static ?string $title = 'Raraxuan Settings';
 
@@ -37,26 +36,34 @@ class RaraxuanSettings extends Page implements HasForms
         ]);
     }
 
-    public function form(Form $form): Form
+    public function form(object $form): object
     {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('api_key')
-                    ->label('API Key')
-                    ->password()
-                    ->revealable()
-                    ->required(),
+        $components = [
+            Forms\Components\TextInput::make('api_key')
+                ->label('API Key')
+                ->password()
+                ->revealable()
+                ->required(),
 
-                Forms\Components\TextInput::make('base_url')
-                    ->label('Base URL')
-                    ->default('https://ai.raraxuan.com')
-                    ->required(),
+            Forms\Components\TextInput::make('base_url')
+                ->label('Base URL')
+                ->default('https://ai.raraxuan.com/api')
+                ->required(),
 
-                Forms\Components\TextInput::make('default_engine')
-                    ->label('Default Engine')
-                    ->required(),
-            ])
-            ->statePath('data');
+            Forms\Components\TextInput::make('default_engine')
+                ->label('Default Engine')
+                ->required(),
+        ];
+
+        if (method_exists($form, 'components')) {
+            return $form->components($components)->statePath('data');
+        }
+
+        if (method_exists($form, 'schema')) {
+            return $form->schema($components)->statePath('data');
+        }
+
+        throw new \RuntimeException('Unsupported Filament form object: ' . $form::class);
     }
 
     public function save(): void
