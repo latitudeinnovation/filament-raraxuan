@@ -19,6 +19,16 @@ View your Raraxuan organization, available prompt templates, and usage statistic
 - Filament 3.x
 - Raraxuan API Account
 
+## Frontend Assets
+
+This plugin ships plain compiled CSS through Filament's asset system. It does not require the host app to install Tailwind CSS, add a Tailwind content source, or change Vite configuration.
+
+If the page loads without plugin styling after installation or update, publish Filament assets:
+
+```bash
+php artisan filament:assets
+```
+
 ## Version Compatibility
 
 This branch supports Filament 3.x.
