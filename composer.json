@@ -15,6 +15,9 @@
         "latitudeinnovation/laravel-raraxuan": "^0.1.1"
     },
     "extra": {
+        "branch-alias": {
+            "dev-3.x": "3.x-dev"
+        },
         "laravel": {
             "providers": [
                 "LatitudeInnovation\\FilamentRaraxuan\\FilamentRaraxuanServiceProvider"
