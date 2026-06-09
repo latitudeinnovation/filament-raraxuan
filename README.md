@@ -15,17 +15,15 @@ View your Raraxuan organization, available prompt templates, and usage statistic
 ## Requirements
 
 - PHP 8.2+
-- Laravel 10, 11 or 12
-- Filament 3.x, 4.x, or 5.x
+- Laravel 11.28, 12 or 13
+- Filament 5.x
 - Raraxuan API Account
 
 ## Version Compatibility
 
-This package supports multiple Filament majors through an internal compatibility layer.
+This branch supports Filament 5.x.
 
-- Filament 3.x
-- Filament 4.x
-- Filament 5.x
+For Filament 3.x, install the `^3.0` release line instead.
 
 The public plugin entrypoint remains the same across versions:
 
@@ -36,12 +34,18 @@ $panel
     ->plugin(RaraxuanPlugin::make());
 ```
 
-Compatibility is enforced in CI with a Filament 3/4/5 matrix workflow.
-
 ## Installation
 
+### Filament v5
+
 ```bash
-composer require latitudeinnovation/filament-raraxuan
+composer require latitudeinnovation/filament-raraxuan:^5.0
+```
+
+### Filament v3
+
+```bash
+composer require latitudeinnovation/filament-raraxuan:^3.0
 ```
 
 Publish the config if you want to customize defaults:
