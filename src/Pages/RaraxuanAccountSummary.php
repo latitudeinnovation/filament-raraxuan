@@ -8,7 +8,7 @@ use LatitudeInnovation\FilamentRaraxuan\Support\RaraxuanApi;
 
 class RaraxuanAccountSummary extends Page
 {
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-chart-bar-square';
+    protected static ?string $navigationIcon = 'heroicon-o-chart-bar-square';
 
     protected string $view = 'filament-raraxuan::pages.account-summary';
 

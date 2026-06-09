@@ -4,7 +4,7 @@ namespace LatitudeInnovation\FilamentRaraxuan;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use LatitudeInnovation\FilamentRaraxuan\Compatibility\Contracts\FilamentCompat;
+use LatitudeInnovation\FilamentRaraxuan\Pages\RaraxuanAccountSummary;
 
 class RaraxuanPlugin implements Plugin
 {
@@ -15,7 +15,9 @@ class RaraxuanPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        app(FilamentCompat::class)->register($panel);
+        $panel->pages([
+            RaraxuanAccountSummary::class,
+        ]);
     }
 
     public function boot(Panel $panel): void
