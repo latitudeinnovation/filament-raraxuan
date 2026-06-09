@@ -15,8 +15,8 @@ View your Raraxuan organization, available prompt templates, and usage statistic
 ## Requirements
 
 - PHP 8.2+
-- Laravel 10, 11 or 12
-- Filament 3.x
+- Laravel 11.28 or 12
+- Filament 5.x
 - Raraxuan API Account
 
 ## Frontend Assets
@@ -31,9 +31,9 @@ php artisan filament:assets
 
 ## Version Compatibility
 
-This branch supports Filament 3.x.
+This branch supports Filament 5.x.
 
-For Filament 5.x, install the `^5.0` release line instead.
+For Filament 3.x, install the `^3.0` release line instead.
 
 The public plugin entrypoint remains the same across versions:
 
@@ -46,16 +46,16 @@ $panel
 
 ## Installation
 
-### Filament v3
-
-```bash
-composer require latitudeinnovation/filament-raraxuan:^3.0
-```
-
 ### Filament v5
 
 ```bash
 composer require latitudeinnovation/filament-raraxuan:^5.0
+```
+
+### Filament v3
+
+```bash
+composer require latitudeinnovation/filament-raraxuan:^3.0
 ```
 
 Publish the config if you want to customize defaults:
