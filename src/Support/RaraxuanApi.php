@@ -9,12 +9,10 @@ use LatitudeInnovation\Raraxuan\Exceptions\MissingApiKeyException;
 
 class RaraxuanApi
 {
-    public function simple(string $prompt): array
+    public function accountSummary(): array
     {
         return $this->http()
-            ->post($this->endpoint('/v1/ai/simple'), [
-                'prompt' => $prompt,
-            ])
+            ->get($this->endpoint('/v1/account/summary'))
             ->throw()
             ->json();
     }

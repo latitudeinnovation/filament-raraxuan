@@ -2,20 +2,14 @@
 
 Official Filament plugin for the Raraxuan AI Platform.
 
-Bring AI capabilities directly into your Filament admin panel with AI playgrounds, assistants, content generators, bulk actions, and custom AI-powered workflows.
+View your Raraxuan organization, available prompt templates, and usage statistics directly inside your Filament admin panel.
 
 ## Features
 
-- AI Playground
-- AI Chat Assistant
-- Form Field Generators
-- Rich Editor Actions
-- Table Bulk Actions
-- Content Generation
-- Translation
-- Summarization
-- Custom Prompt Integration
-- Multiple AI Engine Support
+- Account summary page
+- Available prompt templates
+- Usage statistics
+- Environment-based configuration
 - Seamless Filament Integration
 
 ## Requirements
@@ -65,10 +59,9 @@ $panel
     ->plugin(RaraxuanPlugin::make());
 ```
 
-Add your Raraxuan settings to `.env`:
+Add your Raraxuan configuration to `.env`:
 
 ```dotenv
 RARAXUAN_API_KEY=your-api-key
 RARAXUAN_API_URL=https://ai.raraxuan.com/api
-RARAXUAN_DEFAULT_ENGINE=gpt-5.5
 ```
