@@ -15,7 +15,7 @@ View your Raraxuan organization, available prompt templates, and usage statistic
 ## Requirements
 
 - PHP 8.2+
-- Laravel 11.28 or 12
+- Laravel 11.28, 12 or 13
 - Filament 5.x
 - Raraxuan API Account
 
